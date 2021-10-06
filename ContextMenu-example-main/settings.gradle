@@ -1,0 +1,2 @@
+rootProject.name = "Context Menu Example"
+include ':app'

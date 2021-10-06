@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/copyItem"
+        android:title="Copy" />
+    <!--android:icon="@drawable/ic_new_game"-->
+
+    <item
+        android:id="@+id/shareItem"
+        android:title="Share" />
+</menu>
