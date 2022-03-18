@@ -6,15 +6,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnticipateInterpolator
+import androidx.activity.viewModels
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.gamingingrs.splashscreenapi.databinding.ActivityMainBinding
+import com.gamingingrs.splashscreenapi.utils.MainViewModel
 import com.gamingingrs.splashscreenapi.utils.delay
+import com.gamingingrs.splashscreenapi.utils.toast
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var keep = true
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,10 +30,17 @@ class MainActivity : AppCompatActivity() {
     private fun initSplashScreen() {
         val splashScreen = installSplashScreen()
         // Keep SplashScreen alive until keep equals true
-        splashScreen.setKeepOnScreenCondition { keep }
+        viewModel.splashScreenNotDone.observe(this) {
+            splashScreen.setKeepOnScreenCondition { it }
+
+            if (!it) {
+                // What to do when SplashScreen end successfully?
+                "SplashScreen ended".toast(this)
+            }
+        }
 
         delay(SPLASH_SCREEN_DURATION) {
-            keep = false
+            viewModel.endSplashScreen()
         }
 
         setSplashAnimation()
