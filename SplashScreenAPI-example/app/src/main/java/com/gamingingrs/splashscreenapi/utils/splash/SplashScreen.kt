@@ -14,12 +14,12 @@ class SplashScreen(private val activity: Activity) {
     private var listener: SplashScreenListener? = null
     private var splashScreenAlive = true
 
-    fun init(splashScreenAnimation: Boolean = true) {
+    fun init(splashScreenDuration: Long = 2000L, splashScreenAnimation: Boolean = true) {
         val splashScreen = activity.installSplashScreen()
         // Keep SplashScreen alive until keep equals true
         splashScreen.setKeepOnScreenCondition { splashScreenAlive }
 
-        delay(SPLASH_SCREEN_DURATION) {
+        delay(splashScreenDuration) {
             splashScreenAlive = false
             listener?.onSuccess("SplashScreen ended successfully")
         }
@@ -52,5 +52,3 @@ class SplashScreen(private val activity: Activity) {
     }
 
 }
-
-private const val SPLASH_SCREEN_DURATION = 2000L
