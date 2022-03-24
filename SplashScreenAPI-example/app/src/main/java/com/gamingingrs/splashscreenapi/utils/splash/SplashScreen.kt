@@ -2,7 +2,6 @@ package com.gamingingrs.splashscreenapi.utils.splash
 
 import android.animation.ObjectAnimator
 import android.app.Activity
-import android.content.Context
 import android.os.Build
 import android.view.View
 import android.view.animation.AnticipateInterpolator
@@ -10,14 +9,12 @@ import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.gamingingrs.splashscreenapi.utils.delay
 
-class SplashScreen(private val context: Context) {
+class SplashScreen(private val activity: Activity) {
 
-    private lateinit var activity: Activity
     private var listener: SplashScreenListener? = null
     private var splashScreenAlive = true
 
     fun init(splashScreenAnimation: Boolean = true) {
-        activity = context as Activity
         val splashScreen = activity.installSplashScreen()
         // Keep SplashScreen alive until keep equals true
         splashScreen.setKeepOnScreenCondition { splashScreenAlive }
