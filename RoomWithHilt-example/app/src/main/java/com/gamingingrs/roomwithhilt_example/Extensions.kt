@@ -8,5 +8,5 @@ fun Any.toast(context: Context, duration: Int = Toast.LENGTH_SHORT): Toast {
     return Toast.makeText(context, this.toString(), duration).apply { show() }
 }
 
-fun getNames(e: Class<out Enum<*>>) =
-    Arrays.stream(e.enumConstants).map(Enum<*>::name).toArray<String>(::arrayOfNulls)
+fun getNames(e: Class<out Enum<*>>): Array<String> =
+    Arrays.stream(e.enumConstants).map(Enum<*>::name).toArray(::arrayOfNulls)

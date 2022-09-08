@@ -2,8 +2,8 @@ package com.gamingingrs.roomwithhilt_example.di
 
 import android.content.Context
 import androidx.room.Room
-import com.gamingingrs.roomwithhilt_example.database.Database
-import com.gamingingrs.roomwithhilt_example.database.dao.AnimalsDao
+import com.gamingingrs.roomwithhilt_example.data.Database
+import com.gamingingrs.roomwithhilt_example.data.dao.AnimalsDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

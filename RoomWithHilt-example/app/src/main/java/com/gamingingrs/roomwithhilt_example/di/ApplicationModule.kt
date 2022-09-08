@@ -1,8 +1,8 @@
 package com.gamingingrs.roomwithhilt_example.di
 
-import com.gamingingrs.roomwithhilt_example.database.dao.AnimalsDao
-import com.gamingingrs.roomwithhilt_example.database.repository.AnimalsDataSource
-import com.gamingingrs.roomwithhilt_example.database.repository.AnimalsRepository
+import com.gamingingrs.roomwithhilt_example.data.dao.AnimalsDao
+import com.gamingingrs.roomwithhilt_example.data.repository.AnimalsDataSource
+import com.gamingingrs.roomwithhilt_example.data.repository.AnimalsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

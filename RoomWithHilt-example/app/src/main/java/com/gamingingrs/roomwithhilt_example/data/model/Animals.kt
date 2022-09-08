@@ -1,8 +1,7 @@
-package com.gamingingrs.roomwithhilt_example.database.model
+package com.gamingingrs.roomwithhilt_example.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
 
 @Entity(tableName = "animals")
 data class Animals(val animal: String, val family: String) {

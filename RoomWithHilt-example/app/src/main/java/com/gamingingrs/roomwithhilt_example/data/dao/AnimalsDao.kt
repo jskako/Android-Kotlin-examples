@@ -1,10 +1,10 @@
-package com.gamingingrs.roomwithhilt_example.database.dao
+package com.gamingingrs.roomwithhilt_example.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.gamingingrs.roomwithhilt_example.database.model.Animals
+import com.gamingingrs.roomwithhilt_example.data.model.Animals
 
 @Dao
 interface AnimalsDao {
