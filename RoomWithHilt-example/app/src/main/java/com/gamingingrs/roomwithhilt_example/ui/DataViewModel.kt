@@ -16,7 +16,7 @@ class DataViewModel @Inject constructor(
 ) : ViewModel() {
 
     val animals = animalsRepository.getAll() // Get observer
-    val animalFamily =
+    val animalFamilyCat =
         animalsRepository.getAnimalsBy(CAT.name) // Get observer for specific animal family
 
     fun addAnimal(animal: String, family: String) {
