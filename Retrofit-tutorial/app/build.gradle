@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.jskako.retrofit_tutorial'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.jskako.retrofit_tutorial"
+        minSdk 23
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // Retrofit
+    implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.9.0'
+    implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: '2.9.0'
+    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.10.0'
+
+    // Coroutines
+    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '1.6.4', ext: 'pom'
+    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-android', version: '1.6.4'
+
+    // Coroutine Lifecycle Scopes
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+    implementation group: 'androidx.lifecycle', name: 'lifecycle-viewmodel-ktx', version: '2.5.1'
+    implementation group: 'androidx.lifecycle', name: 'lifecycle-runtime', version: '2.5.1'
+
+}
