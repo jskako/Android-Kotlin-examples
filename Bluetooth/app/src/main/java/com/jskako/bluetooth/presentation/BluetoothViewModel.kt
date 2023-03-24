@@ -8,6 +8,7 @@ import com.jskako.bluetooth.domain.chat.ConnectionResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -23,7 +24,8 @@ class BluetoothViewModel @Inject constructor(
     ) { scannedDevices, pairedDevices, state ->
         state.copy(
             scannedDevices = scannedDevices,
-            pairedDevices = pairedDevices
+            pairedDevices = pairedDevices,
+            messages = if(state.isConnected) state.messages else emptyList()
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(500), _state.value)
 
@@ -71,6 +73,17 @@ class BluetoothViewModel @Inject constructor(
     fun startScan() = bluetoothController.startDiscovery()
     fun stopScan() = bluetoothController.stopDiscovery()
 
+    fun sendMessage(message: String) {
+        viewModelScope.launch {
+            val bluetoothMessage = bluetoothController.trySendMessage(message)
+            if(bluetoothMessage != null) {
+                _state.update { it.copy(
+                    messages = it.messages + bluetoothMessage
+                ) }
+            }
+        }
+    }
+
     private fun Flow<ConnectionResult>.listen(): Job {
         return onEach { result ->
             when (result) {
@@ -89,6 +102,13 @@ class BluetoothViewModel @Inject constructor(
                             isConnected = false,
                             isConnecting = false,
                             errorMessage = result.message
+                        )
+                    }
+                }
+                is ConnectionResult.TransferSucceeded -> {
+                    _state.update {
+                        it.copy(
+                            messages =  it.messages + result.message
                         )
                     }
                 }
