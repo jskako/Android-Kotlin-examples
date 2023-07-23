@@ -45,4 +45,8 @@ android {
     defaultConfig {
         minSdk = ProjectConfig.minSdk
     }
+    compileOptions {
+        sourceCompatibility = Build.javaCompileVersion
+        targetCompatibility = Build.javaCompileVersion
+    }
 }
