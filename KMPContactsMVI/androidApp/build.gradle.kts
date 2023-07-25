@@ -46,5 +46,5 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview:${Compose.composeVersion}")
     implementation("androidx.compose.foundation:foundation:${Compose.composeVersion}")
     implementation("androidx.compose.material:material:${Compose.composeVersion}")
-    implementation("androidx.activity:activity-compose:${Compose.composeActivity}")
+    implementation(AndroidX.activityCompose)
 }
